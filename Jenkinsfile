@@ -13,7 +13,6 @@ pipeline {
         sh node anagramtest.js
         sh rm -r node_modules
         sh rm package.json
-        sh rm package-lock.json
       }
     }
     stage('Building image') {
