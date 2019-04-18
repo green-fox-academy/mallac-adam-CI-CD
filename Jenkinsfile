@@ -25,7 +25,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             // dockerImage.push()
-            sh 'docker build -f "Dockerfile"'
+            sh 'docker build -f "Dockerfile" -t adambhun/multibranch-ci-cd:latest .'
           }
         }
       }
