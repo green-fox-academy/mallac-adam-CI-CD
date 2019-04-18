@@ -11,8 +11,6 @@ pipeline {
         sh 'npm init -y'
         sh 'npm install tape'
         sh 'node anagramtest.js'
-        sh 'rm -r node_modules'
-        sh 'rm package.json'
       }
     }
     stage('Building image') {
@@ -31,9 +29,11 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+    stage('Cleanup') {
       steps{
         sh 'docker rmi $registry:$BUILD_NUMBER'
+        sh 'rm -r node_modules'
+        sh 'rm package.json'
       }
     }
   }
