@@ -23,9 +23,9 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
-            // dockerImage.push()
-            sh 'docker build -f "Dockerfile" -t adambhun/multibranch-ci-cd:latest .'
+          docker.withRegistry( 'https://cloud.docker.com/repository/docker/adambhun/multibranch-ci-cd', registryCredential ) {
+            dockerImage.push()
+            // sh 'docker build -f "Dockerfile" -t adambhun/multibranch-ci-cd:latest .'
           }
         }
       }
