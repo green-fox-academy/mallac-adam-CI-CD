@@ -24,7 +24,8 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+            // dockerImage.push()
+            sh 'docker build -f "Dockerfile" -t $BUILD_NUBMER:latest'
           }
         }
       }
