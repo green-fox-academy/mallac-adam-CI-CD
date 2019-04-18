@@ -24,7 +24,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            sh 'docker push adambhun/multibranch-ci-cd'
+            sh 'docker push adambhun/multibranch-ci-cd:latest'
           }
         }
       }
