@@ -20,12 +20,26 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Deploy to Docker') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
+        }
+      }
+    }
+    stage('Deploy to EB') {
+      steps{
+        script {
+          sh 'python --version'
+          sh 'apt-get install python-pip'
+          sh 'pip --version'
+          sh 'pip install awsebcli --upgrade --user'
+          sh 'eb --version'
+          sh 'ls'
+          sh 'eb init -p docker $BUILD_NUMBER'
+          sh 'eb create $BUILD_NUMBER'
         }
       }
     }
