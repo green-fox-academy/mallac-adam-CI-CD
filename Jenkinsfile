@@ -32,9 +32,6 @@ pipeline {
     stage('Deploy to EB') {
       steps{
         script {
-          sh 'python --version'
-          sh 'apt-get install python-pip'
-          sh 'pip --version'
           sh 'pip install awsebcli --upgrade --user'
           sh 'eb --version'
           sh 'ls'
