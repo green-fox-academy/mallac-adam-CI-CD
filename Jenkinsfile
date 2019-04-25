@@ -35,7 +35,7 @@ pipeline {
           sh 'pip install awsebcli --upgrade --user'
           sh 'eb init --region eu-central-1 -p docker $BUILD_NUMBER'
           sh 'eb use CD-no-25'
-          sh 'eb deploy'
+          sh 'eb deploy CD-no-25'
         }
       }
     }
