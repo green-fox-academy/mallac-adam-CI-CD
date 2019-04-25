@@ -5,4 +5,4 @@ COPY . /app
 RUN npm install
 EXPOSE 3000
 ENTRYPOINT ["node"]
-CMD ["anagram.js"]
+CMD ["hello.js"]

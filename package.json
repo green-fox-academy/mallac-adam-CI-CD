@@ -1,0 +1,24 @@
+{
+  "name": "week-0",
+  "version": "1.0.0",
+  "description": "Repo for the Continuous Integration/Continuous Delivery job",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "tape": "^4.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/green-fox-academy/mallac-adam-CI-CD.git"
+  },
+  "bugs": {
+    "url": "https://github.com/green-fox-academy/mallac-adam-CI-CD/issues"
+  },
+  "homepage": "https://github.com/green-fox-academy/mallac-adam-CI-CD#readme"
+}
