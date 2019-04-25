@@ -9,7 +9,7 @@ pipeline {
     stage('Testing') {
       steps {
         sh 'npm init -y'
-        sh 'npm install tape'
+        sh 'npm install tape express'
         sh 'node anagramtest.js'
       }
     }
