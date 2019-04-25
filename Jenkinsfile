@@ -53,9 +53,10 @@ pipeline {
     }
     stage('Cleanup') {
       steps{
-        sh 'docker rmi $registry:$BUILD_NUMBER'
-        sh 'rm -r node_modules'
-        sh 'rm package.json'
+          sh 'docker rmi $registry:$BUILD_NUMBER'
+          sh 'rm -r node_modules'
+          sh 'rm package.json'
+        }
       }
     }
   }
