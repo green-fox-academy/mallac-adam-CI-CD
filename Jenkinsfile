@@ -30,12 +30,25 @@ pipeline {
       }
     }
     stage('Deploy to EB') {
+      when {
+        branch 'master'
+      }
       steps{
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'adam_dev_aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
           sh 'pip install awsebcli --upgrade --user'
-          sh 'eb init --region eu-central-1 -p docker $BUILD_NUMBER'
-          sh 'eb create CD-no-$BUILD_NUMBER'
+          sh 'eb init --region eu-central-1 -p docker green'
+          sh 'eb create green'
+          sh 'docker images'
         }
+      }
+      when {
+        branch 'first'
+      }
+      steps{
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'adam_dev_aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+          sh 'pip install awsebcli --upgrade --user'
+          sh 'eb init --region eu-central-1 -p docker blue'
+          sh 'eb create blue'
       }
     }
     stage('Cleanup') {
