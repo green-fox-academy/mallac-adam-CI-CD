@@ -41,22 +41,12 @@ pipeline {
           sh 'docker images'
         }
       }
-      when {
-        branch 'first'
-      }
-      steps{
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'adam_dev_aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-          sh 'pip install awsebcli --upgrade --user'
-          sh 'eb init --region eu-central-1 -p docker blue'
-          sh 'eb create blue'
-      }
     }
     stage('Cleanup') {
       steps{
-          sh 'docker rmi $registry:$BUILD_NUMBER'
-          sh 'rm -r node_modules'
-          sh 'rm package.json'
-        }
+        sh 'docker rmi $registry:$BUILD_NUMBER'
+        sh 'rm -r node_modules'
+        sh 'rm package.json'
       }
     }
   }
