@@ -36,9 +36,7 @@ pipeline {
       steps{
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'adam_dev_aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
           sh 'pip install awsebcli --upgrade --user'
-          sh 'eb init --region eu-central-1 -p docker green-$BUILD_NUMBER'
-          sh 'eb clone green -n green-$BUILD_NUMBER'
-          sh 'eb terminate green'
+          sh 'eb deploy green'
         }
       }
     }
